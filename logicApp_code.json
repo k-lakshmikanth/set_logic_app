@@ -1,0 +1,53 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Send_email_(V2)": {
+                "inputs": {
+                    "body": {
+                        "Body": "<p>Test</p>",
+                        "Subject": "Test logic app",
+                        "To": "lakshmikanthkasapuram007@gmail.com"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['gmail']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/v2/Mail"
+                },
+                "runAfter": {},
+                "type": "ApiConnection"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "manual": {
+                "inputs": {
+                    "schema": {}
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "gmail": {
+                    "connectionId": "/subscriptions/4dca8db6-4c28-4249-bae3-a3aa8b154a17/resourceGroups/Primary/providers/Microsoft.Web/connections/gmail",
+                    "connectionName": "gmail",
+                    "id": "/subscriptions/4dca8db6-4c28-4249-bae3-a3aa8b154a17/providers/Microsoft.Web/locations/australiaeast/managedApis/gmail"
+                }
+            }
+        }
+    }
+}
